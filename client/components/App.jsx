@@ -1,24 +1,15 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-
-import { fetchGuitars } from '../actions'
+import GuitarList from './GuitarList'
 
 const App = (props) => {
-  useEffect(() => {
-    props.dispatch(fetchGuitars())
-  })
 
   return (
-    <>
+
       <div className='app'>
-        <h1>Fullstack Boilerplate - with Guitars!</h1>
-        <ul>
-          {props.guitars.map(guitar => (
-            <li key={guitar}>{guitar}</li>
-          ))}
-        </ul>
+          <GuitarList/>
       </div>
-    </>
+
   )
 }
 const mapStateToProps = (globalState) => {
