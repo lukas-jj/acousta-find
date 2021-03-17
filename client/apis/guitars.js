@@ -8,3 +8,4 @@ export function getGuitars () {
       return res.body.guitars
     })
 }
+

@@ -4,10 +4,11 @@ const db = require('../db/guitars')
 
 const router = express.Router()
 
+
 router.get('/', (req, res) => {
-  db.getGuitars()
+  db.getBrands()
     .then(results => {
-      res.json({ guitars: results.map(guitar => guitar.name) })
+      res.json({ brands: results.map(brand => brand.brand) })
       return null
     })
     .catch(err => {
@@ -15,7 +16,6 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Somthing went wrong' })
     })
 })
-
 
 
 module.exports = router
