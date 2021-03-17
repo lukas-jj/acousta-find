@@ -8,7 +8,12 @@ function getBrands (db = connection) {
   return db('brands').select()
 }
 
+function getTypes (db = connection) {
+  return db('types').select()
+}
+
 module.exports = {
   getGuitars,
-  getBrands
+  getBrands,
+  getTypes
 }
