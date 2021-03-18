@@ -9,27 +9,57 @@ const GuitarList = (props) => {
     props.dispatch(fetchTypes())
   }, [])
 
+  const [formData, setFormData] = useState({
+    brands: [],
+    types: []
+  })
+
+  const handleChange = (e) => {
+    e.persist()
+    console.log(!formData.brands.includes(e.target.value))
+    if (!formData.brands.includes(e.target.value)) {
+      setFormData(prevData=> ({...prevData, brands: [...prevData.brands, e.target.value] }))
+    }
+    else {
+      setFormData(prevData=> ({...prevData, brands: prevData.brands.filter(brand=> brand !== e.target.value) }))
+
+    }
+  }
+
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   let {
+  //     brand,
+  //     types
+  //   } = formData
+  // }
+
   return (
     <>
+    {formData.brands.map(brand => <h1>{brand}</h1>)}
       <div className='guitarList'>
         <h1>Fullstack Boilerplate - with Guitars!</h1>
-        <form>
+        <form  >
           <h2>Brands</h2>
           {props.brands.map(brand => (
-            <label>
+            <label key={brand.id}>
               {brand}:
               <input
                 name={brand}
                 type="checkbox"
+                onChange={handleChange}
+                value={brand}
               />
               <br />
             </label>
           ))}
           <h2>Types</h2>
           {props.types.map(type => (
-            <label>
+            <label key={type.id}>
               {type}:
               <input
+                key={type.id}
                 name={type}
                 type="checkbox"
               />
