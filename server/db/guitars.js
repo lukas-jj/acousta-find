@@ -14,7 +14,10 @@ function getTypes (db = connection) {
 
 function getFilteredList (formData, db = connection) {
   console.log(formData)
-  return db('guitars').select()
+  return db('guitars')
+  .join('brands', 'brands.id', '=', 'guitars.brand_id').whereIn('guitars.brand_id', formData.brands)
+  // .select('guitars.id', 'guitars.name').whereIn("brands.id", formData.brands)
+
 }
 module.exports = {
   getGuitars,

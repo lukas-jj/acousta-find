@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   db.getFilteredList(req.body)
       .then(results => {
-          res.json({ guitars: results.map(guitar => guitar) })
+console.log(results)
           return null
       })
       .catch(err => {

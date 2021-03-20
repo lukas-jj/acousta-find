@@ -16,14 +16,12 @@ const GuitarList = (props) => {
 
   const handleChange = (e) => {
     e.persist()
-    console.log(props.brands.map(brand=> brand.id))
     if (!formData.brands.includes(e.target.value)) {
       setFormData(prevData => ({ ...prevData, brands: [...prevData.brands, e.target.value] }))
     }
     else {
       setFormData(prevData => ({ ...prevData, brands: prevData.brands.filter(brand => brand !== e.target.value) }))
     }
-    console.log(formData)
   }
 
   const handleSubmit = (e) => {
