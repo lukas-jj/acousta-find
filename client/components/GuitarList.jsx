@@ -9,6 +9,10 @@ const GuitarList = (props) => {
     props.dispatch(fetchTypes())
   }, [])
 
+
+console.log("props.list", props.list.list)
+console.log("props.brands", props.brands)
+
   const [formData, setFormData] = useState({
     brands: [],
     types: []
@@ -31,7 +35,6 @@ const GuitarList = (props) => {
 
   return (
     <>
-      {formData.brands.map(brand => <h1>{brand}</h1>)}
       <div className='guitarList'>
         <h1>Fullstack Boilerplate - with Guitars!</h1>
         <form onSubmit={handleSubmit}  >
@@ -65,8 +68,14 @@ const GuitarList = (props) => {
 
         </form>
         <ul>
-          {props.guitars.map(guitar => (
-            <li key={guitar.id}>{guitar}</li>
+          
+          {props.list.list && props.list.list.map(list => (
+            <li key={list.id}>
+             <p> Name: {list.name}</p><br/>
+             <p> Brand: {list.brand}</p><br/>
+             <p> Type: {list.type}</p><br/>
+
+              </li>
           ))}
         </ul>
       </div>
@@ -78,7 +87,8 @@ const mapStateToProps = (globalState) => {
   return {
     guitars: globalState.guitars,
     brands: globalState.brands,
-    types: globalState.types
+    types: globalState.types,
+    list: globalState.list
   }
 }
 

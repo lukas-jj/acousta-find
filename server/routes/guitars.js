@@ -18,14 +18,14 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
   db.getFilteredList(req.body)
-      .then(results => {
-console.log(results)
-          return null
-      })
-      .catch(err => {
-          console.log(err)
-          res.status(500).json({ message: 'Somthing went wrong' })
-      })
+    .then(results => {
+      res.json({ list: results })
+      return null
+    })
+    .catch(err => {
+      console.log(err)
+      res.status(500).json({ message: 'Somthing went wrong' })
+    })
 })
 
 module.exports = router
