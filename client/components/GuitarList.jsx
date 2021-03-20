@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { fetchGuitars, fetchBrands, fetchTypes } from '../actions'
+import { fetchGuitars, fetchBrands, fetchTypes, fetchFilteredList } from '../actions'
 
 const GuitarList = (props) => {
   useEffect(() => {
@@ -16,40 +16,36 @@ const GuitarList = (props) => {
 
   const handleChange = (e) => {
     e.persist()
-    console.log(!formData.brands.includes(e.target.value))
+    console.log(props.brands.map(brand=> brand.id))
     if (!formData.brands.includes(e.target.value)) {
-      setFormData(prevData=> ({...prevData, brands: [...prevData.brands, e.target.value] }))
+      setFormData(prevData => ({ ...prevData, brands: [...prevData.brands, e.target.value] }))
     }
     else {
-      setFormData(prevData=> ({...prevData, brands: prevData.brands.filter(brand=> brand !== e.target.value) }))
-
+      setFormData(prevData => ({ ...prevData, brands: prevData.brands.filter(brand => brand !== e.target.value) }))
     }
+    console.log(formData)
   }
 
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   let {
-  //     brand,
-  //     types
-  //   } = formData
-  // }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    props.dispatch(fetchFilteredList(formData))
+  }
 
   return (
     <>
-    {formData.brands.map(brand => <h1>{brand}</h1>)}
+      {formData.brands.map(brand => <h1>{brand}</h1>)}
       <div className='guitarList'>
         <h1>Fullstack Boilerplate - with Guitars!</h1>
-        <form  >
+        <form onSubmit={handleSubmit}  >
           <h2>Brands</h2>
           {props.brands.map(brand => (
             <label key={brand.id}>
-              {brand}:
+              {brand.brand}:
               <input
                 name={brand}
                 type="checkbox"
                 onChange={handleChange}
-                value={brand}
+                value={brand.id}
               />
               <br />
             </label>
@@ -59,14 +55,13 @@ const GuitarList = (props) => {
             <label key={type.id}>
               {type}:
               <input
-                key={type.id}
                 name={type}
                 type="checkbox"
               />
               <br />
             </label>
           ))}
-
+          <input type="submit" value="Submit" />
 
         </form>
         <ul>

@@ -5,6 +5,7 @@ const db = require('../db/guitars')
 const router = express.Router()
 
 router.get('/', (req, res) => {
+
   db.getTypes()
     .then(results => {
       res.json({ types: results.map(type => type.type) })

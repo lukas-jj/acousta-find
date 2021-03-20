@@ -16,6 +16,16 @@ router.get('/', (req, res) => {
     })
 })
 
-
+router.post('/', (req, res) => {
+  db.getFilteredList(req.body)
+      .then(results => {
+          res.json({ guitars: results.map(guitar => guitar) })
+          return null
+      })
+      .catch(err => {
+          console.log(err)
+          res.status(500).json({ message: 'Somthing went wrong' })
+      })
+})
 
 module.exports = router

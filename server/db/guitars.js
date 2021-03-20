@@ -12,8 +12,13 @@ function getTypes (db = connection) {
   return db('types').select()
 }
 
+function getFilteredList (formData, db = connection) {
+  console.log(formData)
+  return db('guitars').select()
+}
 module.exports = {
   getGuitars,
   getBrands,
-  getTypes
+  getTypes,
+  getFilteredList
 }

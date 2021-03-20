@@ -1,10 +1,11 @@
-import { getGuitars } from '../apis/guitars'
+import { getGuitars, getList } from '../apis/guitars'
 import { getBrands } from '../apis/brands'
 import { getTypes } from '../apis/types'
 
 export const SET_GUITARS = 'SET_GUITARS'
 export const SET_BRANDS = 'SET_BRANDS'
 export const SET_TYPES = 'SET_TYPES'
+export const SET_LIST = 'SET_LIST'
 
 
 export function setGuitars (guitars) {
@@ -25,6 +26,13 @@ export function setTypes (types) {
   return {
     type: SET_TYPES,
     types
+  }
+}
+
+export function setList (list) {
+  return {
+    type: SET_LIST,
+    list
   }
 }
 
@@ -53,6 +61,16 @@ export function fetchBrands () {
     return getBrands()
       .then(brands => {
         dispatch(setBrands(brands))
+        return null
+      })
+  }
+}
+
+export function fetchFilteredList (formData) {
+  return dispatch => {
+    return getList(formData)
+      .then(list => {
+        dispatch(setList(list))
         return null
       })
   }
