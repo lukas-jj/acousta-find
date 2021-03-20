@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
 
   db.getTypes()
     .then(results => {
-      res.json({ types: results.map(type => type.type) })
-      return null
+        res.json({types: results })
+        return null
     })
     .catch(err => {
       console.log(err)

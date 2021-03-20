@@ -7,7 +7,6 @@ exports.seed = function (knex) {
         { id: 1, type: 'Travel', },
         { id: 2, type: 'Dreadnaught', },
         { id: 3, type: 'OM',},
-
       ])
     })
 }

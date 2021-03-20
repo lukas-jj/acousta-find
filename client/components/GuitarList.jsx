@@ -16,11 +16,11 @@ const GuitarList = (props) => {
 
   const handleChange = (e) => {
     e.persist()
-    if (!formData.brands.includes(e.target.value)) {
-      setFormData(prevData => ({ ...prevData, brands: [...prevData.brands, e.target.value] }))
+    if (!formData[e.target.name].includes(e.target.value)) {
+      setFormData(prevData => ({ ...prevData, [e.target.name]: [...prevData[e.target.name], e.target.value] }))
     }
     else {
-      setFormData(prevData => ({ ...prevData, brands: prevData.brands.filter(brand => brand !== e.target.value) }))
+      setFormData(prevData => ({ ...prevData, [e.target.name]: prevData[e.target.name].filter(value => value !== e.target.value) }))
     }
   }
 
@@ -40,7 +40,7 @@ const GuitarList = (props) => {
             <label key={brand.id}>
               {brand.brand}:
               <input
-                name={brand}
+                name={'brands'}
                 type="checkbox"
                 onChange={handleChange}
                 value={brand.id}
@@ -51,10 +51,12 @@ const GuitarList = (props) => {
           <h2>Types</h2>
           {props.types.map(type => (
             <label key={type.id}>
-              {type}:
+              {type.type}:
               <input
-                name={type}
+                name={'types'}
                 type="checkbox"
+                onChange={handleChange}
+                value={type.id}
               />
               <br />
             </label>
