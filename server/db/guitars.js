@@ -16,6 +16,7 @@ function getFilteredList(formData, db = connection) {
   console.log(formData)
   return db('guitars')
     .join('brands', 'brands.id', '=', 'guitars.brand_id')
+    .join('types', 'types.id', '=', 'guitars.type_id')
     .whereIn('guitars.brand_id', formData.brands)
     .whereIn('guitars.type_id', formData.types)
 }
