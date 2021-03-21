@@ -32,30 +32,44 @@ const GuitarList = (props) => {
     props.dispatch(fetchFilteredList(formData))
 
   }
-console.log(props.list)
   const handleType = (e) => {
+
     setAllTypes(!allTypes)
-    let typesLength = props.types.length
-    let newArr = []
-    for (let i = 1; i < typesLength +1; i++) {
-      console.log(i)
-      newArr.push(i)
+    if (e.target.checked) {
+
+      setAllTypes(!allTypes)
+
+      let typesLength = props.types.length
+      let newArr = []
+      for (let i = 1; i < typesLength + 1; i++) {
+        console.log(i)
+        newArr.push(i)
+      }
+      setFormData(prevData => ({ ...prevData, types: newArr }))
     }
-    setFormData(prevData => ({ ...prevData, types: newArr }))
+    console.log(formData)
   }
 
   const handleBrand = (e) => {
+
     setAllBrands(!allBrands)
-    let brandsLength = props.brands.length
-    let newArr = []
+    if (e.target.checked) {
 
-    for (let i = 0; i < brandsLength +1; i++) {
-      newArr.push(i)
+      let brandsLength = props.brands.length
+      let newArr = []
+      for (let i = 1; i < brandsLength + 1; i++) {
+        newArr.push(i)
+      }
+      setFormData(prevData => ({ ...prevData, brands: newArr }))
     }
-    setFormData(prevData => ({ ...prevData, brands: newArr }))
+
+    else {
+      setFormData(prevData => ({ ...prevData, brands: [] }))
+
+
+    }
+    console.log(formData)
   }
-
-
 
 
   return (
