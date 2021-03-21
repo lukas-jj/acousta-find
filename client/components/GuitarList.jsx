@@ -10,16 +10,18 @@ const GuitarList = (props) => {
   }, [])
 
 
-console.log("props.list", props.list.list)
-console.log("props.brands", props.brands)
 
   const [formData, setFormData] = useState({
     brands: [],
     types: []
   })
 
+  const [allBrands, setAllBrands] = useState(false)
+  const [allTypes, setAllTypes] = useState(false)
+
   const handleChange = (e) => {
     e.persist()
+
     if (!formData[e.target.name].includes(e.target.value)) {
       setFormData(prevData => ({ ...prevData, [e.target.name]: [...prevData[e.target.name], e.target.value] }))
     }
@@ -33,49 +35,95 @@ console.log("props.brands", props.brands)
     props.dispatch(fetchFilteredList(formData))
   }
 
+  const handleType = (e) => {
+    setAllTypes(!allTypes)
+  }
+
+  const handleBrand = (e) => {
+    setAllBrands(!allBrands)
+  }
+
+
+
+
   return (
     <>
+
       <div className='guitarList'>
-        <h1>Fullstack Boilerplate - with Guitars!</h1>
+        <h1>Acoustic Guitar Search</h1>
         <form onSubmit={handleSubmit}  >
           <h2>Brands</h2>
-          {props.brands.map(brand => (
-            <label key={brand.id}>
-              {brand.brand}:
-              <input
-                name={'brands'}
-                type="checkbox"
-                onChange={handleChange}
-                value={brand.id}
-              />
-              <br />
-            </label>
-          ))}
+              <h3>
+                Choose Brands
+      </h3>
+              <label >
+                All Brands:
+          <input type="checkbox" name='brands' onClick={handleBrand} />
+              </label>
+          {!allBrands ?
+            <div>
+              {props.brands.map(brand => (
+                <label key={brand.id}>
+                  {brand.brand}:
+                  <input
+                    name='brands'
+                    type="checkbox"
+                    onChange={handleChange}
+                    value={brand.id}
+                  />
+
+                  <br />
+                </label>
+              ))}
+
+            </div> :
+            <div>
+              <h3>All Brands</h3>
+            </div>
+          }
           <h2>Types</h2>
-          {props.types.map(type => (
-            <label key={type.id}>
-              {type.type}:
-              <input
-                name={'types'}
-                type="checkbox"
-                onChange={handleChange}
-                value={type.id}
-              />
-              <br />
-            </label>
-          ))}
-          <input type="submit" value="Submit" />
+
+<h3>
+                Choose Type
+      </h3>
+          <label >
+            All Types:
+          <input name='types' type="checkbox" onClick={handleType} />
+          </label>
+          <br />
+          {!allTypes ?
+            <div>
+              
+              {props.types.map(type => (
+                <label key={type.id}>
+                  {type.type}:
+                  <input
+                    name='types'
+                    type="checkbox"
+                    onChange={handleChange}
+                    value={type.id}
+                  />
+
+                  <br />
+                </label>
+              ))}
+
+            </div> :
+            <div>
+              <h3>All Types</h3>
+            </div>}
+
 
         </form>
         <ul>
-          
+
           {props.list.list && props.list.list.map(list => (
             <li key={list.id}>
-             <p> Name: {list.name}</p><br/>
-             <p> Brand: {list.brand}</p><br/>
-             <p> Type: {list.type}</p><br/>
+              <p> Name: {list.name}</p><br />
+              <p> Brand: {list.brand}</p><br />
+              <p> Type: {list.type}</p><br />
 
-              </li>
+            </li>
           ))}
         </ul>
       </div>
@@ -88,7 +136,8 @@ const mapStateToProps = (globalState) => {
     guitars: globalState.guitars,
     brands: globalState.brands,
     types: globalState.types,
-    list: globalState.list
+    list: globalState.list,
+    solid_top: globalState.solid_top
   }
 }
 
