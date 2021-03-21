@@ -47,6 +47,9 @@ const GuitarList = (props) => {
       }
       setFormData(prevData => ({ ...prevData, types: newArr }))
     }
+    else {
+      setFormData(prevData => ({ ...prevData, types: [] }))
+    }
     console.log(formData)
   }
 
