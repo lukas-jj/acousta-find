@@ -48,7 +48,6 @@ const GuitarList = (props) => {
 
   return (
     <>
-
       <div className='guitarList'>
         <h1>Acoustic Guitar Search</h1>
         <form onSubmit={handleSubmit}  >
@@ -112,8 +111,7 @@ const GuitarList = (props) => {
             <div>
               <h3>All Types</h3>
             </div>}
-
-
+<input type="submit"/> 
         </form>
         <ul>
 
