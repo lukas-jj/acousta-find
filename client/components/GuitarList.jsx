@@ -9,8 +9,6 @@ const GuitarList = (props) => {
     props.dispatch(fetchTypes())
   }, [])
 
-
-
   const [formData, setFormData] = useState({
     brands: [],
     types: []
@@ -29,18 +27,32 @@ const GuitarList = (props) => {
       setFormData(prevData => ({ ...prevData, [e.target.name]: prevData[e.target.name].filter(value => value !== e.target.value) }))
     }
   }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     props.dispatch(fetchFilteredList(formData))
-  }
 
+  }
+console.log(props.list)
   const handleType = (e) => {
     setAllTypes(!allTypes)
+    let typesLength = props.types.length
+    let newArr = []
+    for (let i = 1; i < typesLength +1; i++) {
+      console.log(i)
+      newArr.push(i)
+    }
+    setFormData(prevData => ({ ...prevData, types: newArr }))
   }
 
   const handleBrand = (e) => {
     setAllBrands(!allBrands)
+    let brandsLength = props.brands.length
+    let newArr = []
+
+    for (let i = 0; i < brandsLength +1; i++) {
+      newArr.push(i)
+    }
+    setFormData(prevData => ({ ...prevData, brands: newArr }))
   }
 
 
@@ -52,13 +64,13 @@ const GuitarList = (props) => {
         <h1>Acoustic Guitar Search</h1>
         <form onSubmit={handleSubmit}  >
           <h2>Brands</h2>
-              <h3>
-                Choose Brands
+          <h3>
+            Choose Brands
       </h3>
-              <label >
-                All Brands:
+          <label >
+            All Brands:
           <input type="checkbox" name='brands' onClick={handleBrand} />
-              </label>
+          </label>
           {!allBrands ?
             <div>
               {props.brands.map(brand => (
@@ -82,8 +94,8 @@ const GuitarList = (props) => {
           }
           <h2>Types</h2>
 
-<h3>
-                Choose Type
+          <h3>
+            Choose Type
       </h3>
           <label >
             All Types:
@@ -92,7 +104,7 @@ const GuitarList = (props) => {
           <br />
           {!allTypes ?
             <div>
-              
+
               {props.types.map(type => (
                 <label key={type.id}>
                   {type.type}:
@@ -111,7 +123,7 @@ const GuitarList = (props) => {
             <div>
               <h3>All Types</h3>
             </div>}
-<input type="submit"/> 
+          <input type="submit" />
         </form>
         <ul>
 

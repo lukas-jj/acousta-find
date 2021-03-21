@@ -19,7 +19,8 @@ function getFilteredList(formData, db = connection) {
     .join('types', 'types.id', '=', 'guitars.type_id')
     .whereIn('guitars.brand_id', formData.brands)
     .whereIn('guitars.type_id', formData.types)
-}
+    .select("*", "guitars.id as id")
+  }
 
 
 
