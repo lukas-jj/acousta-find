@@ -28,4 +28,4 @@ A search engine for acoustic guitars.
 -  Conditionally render checkoxes so that when items are not available for that category, the checkbox will not show.
 -  Resarch and include my own personal filters to get around the fact that every company has a different body type name (taylor uses words like 'baby' for small guitars). I could instead use the categories 'large', 'medium' and small. Requires more research though :( 
 
-###### Also keep playing guitar too 
+###### Also keep playing guitar too...
