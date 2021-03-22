@@ -23,8 +23,6 @@ function getFilteredList(formData, db = connection) {
   }
 
 
-
-
 module.exports = {
   getGuitars,
   getBrands,

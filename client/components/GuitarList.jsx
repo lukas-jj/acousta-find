@@ -10,12 +10,14 @@ const GuitarList = (props) => {
   }, [])
 
   const [formData, setFormData] = useState({
-    brands: [],
+    brands: [], 
     types: []
   })
 
-  const [allBrands, setAllBrands] = useState(false)
-  const [allTypes, setAllTypes] = useState(false)
+  const [all, setAll] = useState({
+    brands: false,
+    types: false
+  })
 
   const handleChange = (e) => {
     e.persist()
@@ -32,47 +34,40 @@ const GuitarList = (props) => {
     props.dispatch(fetchFilteredList(formData))
 
   }
-  const handleType = (e) => {
-
-    setAllTypes(!allTypes)
+  const handleCheckAll = (e) => {
+    e.persist()
+    setAll(prevData => ({...prevData, [e.target.name]: !prevData[e.target.name]}))
+    console.log(all)
+    console.log(e.target.name)
     if (e.target.checked) {
-
-      setAllTypes(!allTypes)
-
-      let typesLength = props.types.length
+      let typesLength = props[e.target.name].length
       let newArr = []
       for (let i = 1; i < typesLength + 1; i++) {
         console.log(i)
         newArr.push(i)
       }
-      setFormData(prevData => ({ ...prevData, types: newArr }))
+      setFormData(prevData => ({ ...prevData, [e.target.name]: newArr }))
     }
     else {
-      setFormData(prevData => ({ ...prevData, types: [] }))
+      setFormData(prevData => ({ ...prevData, [e.target.name]: [] }))
     }
-    console.log(formData)
   }
 
-  const handleBrand = (e) => {
-
-    setAllBrands(!allBrands)
-    if (e.target.checked) {
-
-      let brandsLength = props.brands.length
-      let newArr = []
-      for (let i = 1; i < brandsLength + 1; i++) {
-        newArr.push(i)
-      }
-      setFormData(prevData => ({ ...prevData, brands: newArr }))
-    }
-
-    else {
-      setFormData(prevData => ({ ...prevData, brands: [] }))
-
-
-    }
-    console.log(formData)
-  }
+  // const handleBrand = (e) => {
+  //   setAllBrands(!allBrands)
+  //   if (e.target.checked) {
+  //     let brandsLength = props.brands.length
+  //     let newArr = []
+  //     for (let i = 1; i < brandsLength + 1; i++) {
+  //       newArr.push(i)
+  //     }
+  //     setFormData(prevData => ({ ...prevData, brands: newArr }))
+  //   }
+  //   else {
+  //     setFormData(prevData => ({ ...prevData, brands: [] }))
+  //   }
+  // }
+  // console.log(props.list.list)
 
 
   return (
@@ -86,9 +81,9 @@ const GuitarList = (props) => {
       </h3>
           <label >
             All Brands:
-          <input type="checkbox" name='brands' onClick={handleBrand} />
+          <input type="checkbox" name='brands' onClick={handleCheckAll} />
           </label>
-          {!allBrands ?
+          {!all.brands ?
             <div>
               {props.brands.map(brand => (
                 <label key={brand.id}>
@@ -99,29 +94,25 @@ const GuitarList = (props) => {
                     onChange={handleChange}
                     value={brand.id}
                   />
-
                   <br />
                 </label>
               ))}
-
             </div> :
             <div>
               <h3>All Brands</h3>
             </div>
           }
           <h2>Types</h2>
-
           <h3>
             Choose Type
       </h3>
           <label >
             All Types:
-          <input name='types' type="checkbox" onClick={handleType} />
+          <input name='types' type="checkbox" onClick={handleCheckAll} />
           </label>
           <br />
-          {!allTypes ?
+          {!all.types ?
             <div>
-
               {props.types.map(type => (
                 <label key={type.id}>
                   {type.type}:
@@ -131,11 +122,9 @@ const GuitarList = (props) => {
                     onChange={handleChange}
                     value={type.id}
                   />
-
                   <br />
                 </label>
               ))}
-
             </div> :
             <div>
               <h3>All Types</h3>
@@ -143,15 +132,14 @@ const GuitarList = (props) => {
           <input type="submit" />
         </form>
         <ul>
-
           {props.list.list && props.list.list.map(list => (
             <li key={list.id}>
               <p> Name: {list.name}</p><br />
               <p> Brand: {list.brand}</p><br />
               <p> Type: {list.type}</p><br />
-
             </li>
-          ))}
+          ))        
+        }
         </ul>
       </div>
     </>
