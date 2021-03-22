@@ -1,29 +1,31 @@
-# Fullstack boilerplate
+# Acoustic Search
 
-## Getting Started
+A search engine for acoustic guitars.
 
-### From the Github UI
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
 
-### From the command line
+## To Do
 
-```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
-npm install # to install dependencies
-npm run dev # to start the dev server
-```
+### Data
+- Research wood (top, sides, neck), solid tops, body types, neck radiuses, bracing and other potential filters.
+- Create more seeds for database and rollback/migrate latest.
 
-You can find the server running on [http://localhost:3000](http://localhost:3000).
+### Components
+- Refactor repeated code on Guitar List handleSubmit function (setAll should be an object with true or false for properties instead of individual booleans so that I can use e.target.name).
+- Refactor each category to be it's own component (category or brands, types, neck_radius etc).
+- Add new categories (*front and back end)
+- Have a 'no listings found' conditional if no matches are found.
 
-## Details
+###  SASS / CSS
+- Create 'card' for each guitar in the filtered list. 
+- Make the filter/checkboxes appear on the left side only and have the main body be the guitar listing.
+- CMD C + CMD V Bulma styles.
 
-This repo includes:
+### Stretch 
+- use external API for guitars so I don't have to spend so long doing research (email Taylor, Cole Clark and Maton support). 
+- Create a 'search' bar so the user can serach by name, ideally with autocomplete.
+-  Create filters for price, category (a-z) etc.
+-  List how many items are available in each category.
+-  Conditionally render checkoxes so that when items are not available for that category, the checkbox will not show.
+-  Cnclude my own personal filters to get around the fact that every company has a different body type name (taylor uses words like 'baby' for small guitars). I could use general categories such as 'large', 'medium' and small. 
 
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
-* configuration for Jest and Enzyme (including JSDOM)
-* configuration for server-side debugging in VS Code
-* a single client-side test (`client/components/App.test.js`)
+###### Also keep playing guitar too...
