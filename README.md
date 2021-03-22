@@ -26,6 +26,6 @@ A search engine for acoustic guitars.
 -  Create filters for price, category (a-z) etc.
 -  List how many items are available in each category.
 -  Conditionally render checkoxes so that when items are not available for that category, the checkbox will not show.
--  Resarch and include my own personal filters to get around the fact that every company has a different body type name (taylor uses words like 'baby' for small guitars). I could instead use the categories 'large', 'medium' and small. Requires more research though :( 
+-  Cnclude my own personal filters to get around the fact that every company has a different body type name (taylor uses words like 'baby' for small guitars). I could use general categories such as 'large', 'medium' and small. 
 
 ###### Also keep playing guitar too...
