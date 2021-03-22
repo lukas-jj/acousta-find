@@ -10,7 +10,7 @@ const GuitarList = (props) => {
   }, [])
 
   const [formData, setFormData] = useState({
-    brands: [], 
+    brands: [],
     types: []
   })
 
@@ -36,7 +36,7 @@ const GuitarList = (props) => {
   }
   const handleCheckAll = (e) => {
     e.persist()
-    setAll(prevData => ({...prevData, [e.target.name]: !prevData[e.target.name]}))
+    setAll(prevData => ({ ...prevData, [e.target.name]: !prevData[e.target.name] }))
     console.log(all)
     console.log(e.target.name)
     if (e.target.checked) {
@@ -52,23 +52,6 @@ const GuitarList = (props) => {
       setFormData(prevData => ({ ...prevData, [e.target.name]: [] }))
     }
   }
-
-  // const handleBrand = (e) => {
-  //   setAllBrands(!allBrands)
-  //   if (e.target.checked) {
-  //     let brandsLength = props.brands.length
-  //     let newArr = []
-  //     for (let i = 1; i < brandsLength + 1; i++) {
-  //       newArr.push(i)
-  //     }
-  //     setFormData(prevData => ({ ...prevData, brands: newArr }))
-  //   }
-  //   else {
-  //     setFormData(prevData => ({ ...prevData, brands: [] }))
-  //   }
-  // }
-  // console.log(props.list.list)
-
 
   return (
     <>
@@ -100,11 +83,12 @@ const GuitarList = (props) => {
             </div> :
             <div>
               <h3>All Brands</h3>
-            </div>
-          }
+            </div>}
+
+
           <h2>Types</h2>
           <h3>
-            Choose Type
+            Choose Types
       </h3>
           <label >
             All Types:
@@ -129,6 +113,10 @@ const GuitarList = (props) => {
             <div>
               <h3>All Types</h3>
             </div>}
+
+
+
+
           <input type="submit" />
         </form>
         <ul>
@@ -138,8 +126,8 @@ const GuitarList = (props) => {
               <p> Brand: {list.brand}</p><br />
               <p> Type: {list.type}</p><br />
             </li>
-          ))        
-        }
+          ))
+          }
         </ul>
       </div>
     </>
@@ -152,7 +140,7 @@ const mapStateToProps = (globalState) => {
     brands: globalState.brands,
     types: globalState.types,
     list: globalState.list,
-    solid_top: globalState.solid_top
+    solid_tops: globalState.solid_tops
   }
 }
 

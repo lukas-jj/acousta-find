@@ -1,10 +1,10 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("woods", (table) => {
+  return knex.schema.createTable("solid_tops", (table) => {
     table.increments("id")
-    table.boolean("is_solid_top")
+    table.boolean("solid_top")
   })
 }
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("woods")
+  return knex.schema.dropTable("solid_tops")
 }
