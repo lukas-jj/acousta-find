@@ -22,6 +22,7 @@ A search engine for acoustic guitars.
 ###  SASS / CSS
 - Create 'card' for each guitar in the filtered list. 
 - Make the filter/checkboxes appear on the left side only and have the main body be the guitar listing.
+- CTRL C + CTRL V Bulma styles
 
 
 
