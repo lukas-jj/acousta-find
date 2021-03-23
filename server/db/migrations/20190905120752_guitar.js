@@ -4,6 +4,8 @@ exports.up = function (knex) {
     table.string("name")
     table.integer("brand_id")
     table.string("type_id")
+    table.string("wood_top_id")
+
   })
 }
 

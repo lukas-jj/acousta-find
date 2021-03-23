@@ -6,9 +6,9 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
 
-  db.getSolidTops()
+  db.getWoodTops()
     .then(results => {
-        res.json({solid_tops: results })
+        res.json({wood_tops: results })
         return null
     })
     .catch(err => {
@@ -16,7 +16,5 @@ router.get('/', (req, res) => {
       res.status(500).json({ message: 'Somthing went wrong' })
     })
 })
-
-
 
 module.exports = router

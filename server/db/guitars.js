@@ -12,6 +12,10 @@ function getTypes(db = connection) {
   return db('types').select()
 }
 
+function getWoodTops(db = connection) {
+  return db('wood_tops').select()
+}
+
 function getFilteredList(formData, db = connection) {
   console.log(formData)
   return db('guitars')
@@ -27,5 +31,6 @@ module.exports = {
   getGuitars,
   getBrands,
   getTypes,
-  getFilteredList
+  getFilteredList,
+  getWoodTops
 }

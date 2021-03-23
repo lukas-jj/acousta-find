@@ -1,12 +1,21 @@
 import { getGuitars, getList } from '../apis/guitars'
 import { getBrands } from '../apis/brands'
 import { getTypes } from '../apis/types'
+import { getWoodTops } from '../apis/wood_tops'
 
 export const SET_GUITARS = 'SET_GUITARS'
 export const SET_BRANDS = 'SET_BRANDS'
 export const SET_TYPES = 'SET_TYPES'
 export const SET_LIST = 'SET_LIST'
+export const SET_WOOD_TOPS = 'SET_WOOD_TOPS'
 
+
+export function setWoodTops (wood_tops) {
+  return {
+    type: SET_WOOD_TOPS,
+    wood_tops
+  }
+}
 
 export function setGuitars (guitars) {
   return {
@@ -61,6 +70,16 @@ export function fetchBrands () {
     return getBrands()
       .then(brands => {
         dispatch(setBrands(brands))
+        return null
+      })
+  }
+}
+
+export function fetchWoodTops () {
+  return dispatch => {
+    return getWoodTops()
+      .then(wood_tops => {
+        dispatch(setWoodTops(wood_tops))
         return null
       })
   }

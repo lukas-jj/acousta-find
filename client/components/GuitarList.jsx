@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { fetchGuitars, fetchBrands, fetchTypes, fetchFilteredList } from '../actions'
+import { fetchGuitars, fetchBrands, fetchTypes, fetchFilteredList, fetchWoodTops } from '../actions'
 
 const GuitarList = (props) => {
   useEffect(() => {
     props.dispatch(fetchGuitars())
     props.dispatch(fetchBrands())
     props.dispatch(fetchTypes())
+    props.dispatch(fetchWoodTops())
+
   }, [])
 
   const [formData, setFormData] = useState({
@@ -37,8 +39,6 @@ const GuitarList = (props) => {
   const handleCheckAll = (e) => {
     e.persist()
     setAll(prevData => ({ ...prevData, [e.target.name]: !prevData[e.target.name] }))
-    console.log(all)
-    console.log(e.target.name)
     if (e.target.checked) {
       let typesLength = props[e.target.name].length
       let newArr = []
@@ -52,6 +52,8 @@ const GuitarList = (props) => {
       setFormData(prevData => ({ ...prevData, [e.target.name]: [] }))
     }
   }
+
+  console.log(props.wood_tops)
 
   return (
     <>
@@ -140,7 +142,7 @@ const mapStateToProps = (globalState) => {
     brands: globalState.brands,
     types: globalState.types,
     list: globalState.list,
-    solid_tops: globalState.solid_tops
+    wood_tops: globalState.wood_tops
   }
 }
 
