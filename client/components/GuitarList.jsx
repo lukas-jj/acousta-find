@@ -13,13 +13,18 @@ const GuitarList = (props) => {
 
   const [formData, setFormData] = useState({
     brands: [],
-    types: []
+    types: [],
+    wood_tops: []
   })
 
   const [all, setAll] = useState({
     brands: false,
-    types: false
+    types: false,
+    wood_tops: false
+
   })
+
+  console.log(props.list.list)
 
   const handleChange = (e) => {
     e.persist()
@@ -116,7 +121,33 @@ const GuitarList = (props) => {
               <h3>All Types</h3>
             </div>}
 
-
+          <h2>Wood Tops</h2>
+          <h3>
+            Choose Wood Tops
+      </h3>
+          <label >
+            All Wood Tops:
+          <input name='wood_tops' type="checkbox" onClick={handleCheckAll} />
+          </label>
+          <br />
+          {!all.wood_tops ?
+            <div>
+              {props.wood_tops.map(wood_top => (
+                <label key={wood_top.id}>
+                  {wood_top.wood_top}:
+                  <input
+                    name='wood_tops'
+                    type="checkbox"
+                    onChange={handleChange}
+                    value={wood_top.id}
+                  />
+                  <br />
+                </label>
+              ))}
+            </div> :
+            <div>
+              <h3>All Wood Tops</h3>
+            </div>}
 
 
           <input type="submit" />
@@ -127,6 +158,8 @@ const GuitarList = (props) => {
               <p> Name: {list.name}</p><br />
               <p> Brand: {list.brand}</p><br />
               <p> Type: {list.type}</p><br />
+              <p> Wood Top: {list.wood_top} </p><br />
+
             </li>
           ))
           }
