@@ -10,7 +10,6 @@ A search engine for acoustic guitars.
 - Create more seeds for database and rollback/migrate latest.
 
 ### Components
-- Refactor repeated code on Guitar List handleSubmit function (setAll should be an object with true or false for properties instead of individual booleans so that I can use e.target.name).
 - Refactor each category to be it's own component (category or brands, types, neck_radius etc).
 - Add new categories (*front and back end)
 - Have a 'no listings found' conditional if no matches are found.
@@ -28,4 +27,5 @@ A search engine for acoustic guitars.
 -  Conditionally render checkoxes so that when items are not available for that category, the checkbox will not show.
 -  Cnclude my own personal filters to get around the fact that every company has a different body type name (taylor uses words like 'baby' for small guitars). I could use general categories such as 'large', 'medium' and small. 
 
-###### Also keep playing guitar too...
+### Done
+- Refactor repeated code on Guitar List handleSubmit function (setAll should be an object with true or false for properties instead of individual booleans so that I can use e.target.name).
