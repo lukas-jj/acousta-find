@@ -61,130 +61,134 @@ const GuitarList = (props) => {
 
   return (
     <>
-      <div className='guitarList'>
-        <h1 className="title">Acoustic Guitar Search</h1>
-        <form onSubmit={handleSubmit}  >
 
-          <div className="card">
-            <div className="card-content">
-              <h3 className="subtitle">
-                Choose Brands
-      </h3>
-              <label >
-                All Brands:
-          <input type="checkbox" name='brands' onClick={handleCheckAll} />
-              </label>
-              {!all.brands ?
-                <div>
-                  {props.brands.map(brand => (
-                    <label key={brand.id}>
-                      {brand.brand}:
-                      <input
-                        name='brands'
-                        type="checkbox"
-                        onChange={handleChange}
-                        value={brand.id}
-                      />
-                      <br />
-                    </label>
-                  ))}
-                </div> :
-                <div>
-                  <h3>All Brands</h3>
-                </div>}
+<h1 className="title">Acoustic Guitar Search</h1>
 
-            </div>
-          </div>
-          <br />
+      <div id="search" className="columns">
+        <div className="column is-narrow">
+          <div className="box" width="200px">
 
-          <div className="card">
-          <div className="card-content">
+            <form onSubmit={handleSubmit}  >
 
-            <h3 className="subtitle">
-              Choose Types
-      </h3>
-            <label >
-              All Types:
-          <input name='types' type="checkbox" onClick={handleCheckAll} />
-            </label>
-            <br />
-            {!all.types ?
-              <div>
-                {props.types.map(type => (
-                  <label key={type.id}>
-                    {type.type}:
-                    <input
-                      name='types'
-                      type="checkbox"
-                      onChange={handleChange}
-                      value={type.id}
-                    />
-                    <br />
+              <div className="box">
+                <div className="box-content">
+                  <h3 className="subtitle">
+                    Choose Brands
+</h3>
+                  <label >
+                    All Brands:
+<input type="checkbox" name='brands' onClick={handleCheckAll} />
                   </label>
-                ))}
-              </div> :
-              <div>
-                <h3>All Types</h3>
-              </div>}
+                  {!all.brands ?
+                    <div>
+                      {props.brands.map(brand => (
+                        <label key={brand.id}>
+                          {brand.brand}:
+                          <input
+                            name='brands'
+                            type="checkbox"
+                            onChange={handleChange}
+                            value={brand.id}
+                          />
+                          <br />
+                        </label>
+                      ))}
+                    </div> :
+                    <div>
+                      <h3>All Brands</h3>
+                    </div>}
+
+                </div>
               </div>
-          </div>
-          <br />
-
-          <div className="card">
-          <div className="card-content">
-
-          <h3 className="subtitle">
-            Choose Wood Tops
-      </h3>
-          <label >
-            All Wood Tops:
-          <input name='wood_tops' type="checkbox" onClick={handleCheckAll} />
-          </label>
-          <br />
-          {!all.wood_tops ?
-            <div>
-              {props.wood_tops.map(wood_top => (
-                <label key={wood_top.id}>
-                  {wood_top.wood_top}:
-                  <input
-                    name='wood_tops'
-                    type="checkbox"
-                    onChange={handleChange}
-                    value={wood_top.id}
-                  />
-                  <br />
-                </label>
-              ))}
-            </div> :
-            <div>
-              <h3>All Wood Tops</h3>
-            </div>}
-            </div>
-          </div>
-          <br />
-
-          <input type="submit" />
-        </form>
-        <ul>
-
-          {/* needs guitar card component */}
-
-
-          {props.list.list && props.list.list.map(list => (
-            <>
-              <li key={list.id}>
-                <GuitarCard info={list} />
-              </li>
               <br />
 
-            </>
-          ))
-          }
+              <div className="box">
+                <div className="box-content">
 
-        </ul>
+                  <h3 className="subtitle">
+                    Choose Types
+</h3>
+                  <label >
+                    All Types:
+<input name='types' type="checkbox" onClick={handleCheckAll} />
+                  </label>
+                  <br />
+                  {!all.types ?
+                    <div>
+                      {props.types.map(type => (
+                        <label key={type.id}>
+                          {type.type}:
+                          <input
+                            name='types'
+                            type="checkbox"
+                            onChange={handleChange}
+                            value={type.id}
+                          />
+                          <br />
+                        </label>
+                      ))}
+                    </div> :
+                    <div>
+                      <h3>All Types</h3>
+                    </div>}
+                </div>
+              </div>
+              <br />
+
+              <div className="box">
+                <div className="box-content">
+
+                  <h3 className="subtitle">
+                    Choose Wood Tops
+</h3>
+                  <label >
+                    All Wood Tops:
+<input name='wood_tops' type="checkbox" onClick={handleCheckAll} />
+                  </label>
+                  <br />
+                  {!all.wood_tops ?
+                    <div>
+                      {props.wood_tops.map(wood_top => (
+                        <label key={wood_top.id}>
+                          {wood_top.wood_top}:
+                          <input
+                            name='wood_tops'
+                            type="checkbox"
+                            onChange={handleChange}
+                            value={wood_top.id}
+                          />
+                          <br />
+                        </label>
+                      ))}
+                    </div> :
+                    <div>
+                      <h3>All Wood Tops</h3>
+                    </div>}
+                </div>
+              </div>
+              <br />
+
+              <input type="submit" />
+            </form>
+
+
+          </div>
+        </div>
+        <div className="column is-multiline">
+        <div className="columns is-multiline">
+
+              {/* needs guitar card component */}
+
+
+              {props.list.list && props.list.list.map(list => (
+                  <GuitarCard info={list} />
+             
+              ))
+              }
+
+        </div>
       </div>
-
-
+      </div>
     </>
   )
 }

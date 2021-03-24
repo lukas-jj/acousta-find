@@ -9,9 +9,9 @@ const guitarCard = (props) => {
 
   return (
     <>
-           
+           <div className="column is-one-third">
             <div className="card">
-              <div className="card-content">
+              <div className="card-content has-text-left">
                 <div className="media">
                   <div className="media-left">
                     <figure className="image is-48x48">
@@ -19,7 +19,7 @@ const guitarCard = (props) => {
                     </figure>
                   </div>
                   <div className="media-content">
-                    <p className="title is-4 no-padding">{props.info.name}</p>
+                    <p className="title is-4 no-padding has-text-centered">{props.info.name}</p>
                   </div>
                 </div>
                 <div className="content">
@@ -27,6 +27,7 @@ const guitarCard = (props) => {
                   Top Wood: {props.info.wood_top}
                 </div>
               </div>
+            </div>
             </div>
 </>
   )
