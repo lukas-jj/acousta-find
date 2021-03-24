@@ -9,14 +9,8 @@ const guitarCard = (props) => {
 
   return (
     <>
-            <div id="app" class="row columns is-multiline">
-          <div v-for="card in cardData" key="card.id" className="column is-4">
-            <div className="card large">
-              <div className="card-image">
-                <figure className="image is-16by9">
-                  {/* <img :src="card.image" alt="Image"> */}
-                </figure>
-              </div>
+           
+            <div className="card">
               <div className="card-content">
                 <div className="media">
                   <div className="media-left">
@@ -34,8 +28,6 @@ const guitarCard = (props) => {
                 </div>
               </div>
             </div>
-          </div>
-          </div>
 </>
   )
 }

@@ -62,10 +62,9 @@ const GuitarList = (props) => {
   return (
     <>
       <div className='guitarList'>
-        <h1>Acoustic Guitar Search</h1>
+        <h1 className="title">Acoustic Guitar Search</h1>
         <form onSubmit={handleSubmit}  >
-          <h2>Brands</h2>
-          <h3>
+          <h3 className="subtitle">
             Choose Brands
       </h3>
           <label >
@@ -90,10 +89,9 @@ const GuitarList = (props) => {
             <div>
               <h3>All Brands</h3>
             </div>}
+<br/>
 
-
-          <h2>Types</h2>
-          <h3>
+          <h3 className="subtitle">
             Choose Types
       </h3>
           <label >
@@ -119,9 +117,9 @@ const GuitarList = (props) => {
             <div>
               <h3>All Types</h3>
             </div>}
+            <br/>
 
-          <h2>Wood Tops</h2>
-          <h3>
+          <h3 className="subtitle">
             Choose Wood Tops
       </h3>
           <label >
@@ -156,9 +154,13 @@ const GuitarList = (props) => {
 
 
           {props.list.list && props.list.list.map(list => (
-            <li key={list.id}>
-              <GuitarCard info={list}  />
-            </li>
+            <>
+              <li key={list.id}>
+                <GuitarCard info={list} />
+              </li>
+              <br />
+
+            </>
           ))
           }
 
