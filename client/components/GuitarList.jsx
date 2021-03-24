@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { fetchGuitars, fetchBrands, fetchTypes, fetchFilteredList, fetchWoodTops } from '../actions'
+import GuitarCard from "./GuitarCard"
 
 const GuitarList = (props) => {
   useEffect(() => {
@@ -24,7 +25,6 @@ const GuitarList = (props) => {
 
   })
 
-  console.log(props.list.list)
 
   const handleChange = (e) => {
     e.persist()
@@ -58,7 +58,6 @@ const GuitarList = (props) => {
     }
   }
 
-  console.log(props.wood_tops)
 
   return (
     <>
@@ -149,22 +148,24 @@ const GuitarList = (props) => {
               <h3>All Wood Tops</h3>
             </div>}
 
-
           <input type="submit" />
         </form>
         <ul>
+
+          {/* needs guitar card component */}
+
+
           {props.list.list && props.list.list.map(list => (
             <li key={list.id}>
-              <p> Name: {list.name}</p><br />
-              <p> Brand: {list.brand}</p><br />
-              <p> Type: {list.type}</p><br />
-              <p> Wood Top: {list.wood_top} </p><br />
-
+              <GuitarCard info={list}  />
             </li>
           ))
           }
+
         </ul>
       </div>
+
+
     </>
   )
 }
