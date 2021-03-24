@@ -16,6 +16,10 @@ function getWoodTops(db = connection) {
   return db('wood_tops').select()
 }
 
+function getNeckRadii(db = connection) {
+  return db('neck_radii').select()
+}
+
 function getFilteredList(formData, db = connection) {
   console.log(formData)
   return db('guitars')
@@ -34,5 +38,6 @@ module.exports = {
   getBrands,
   getTypes,
   getFilteredList,
-  getWoodTops
+  getWoodTops,
+  getNeckRadii
 }
