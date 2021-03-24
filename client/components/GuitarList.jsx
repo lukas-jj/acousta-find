@@ -182,7 +182,7 @@ const GuitarList = (props) => {
 
               {props.list.list && props.list.list.map(list => (
                   <GuitarCard info={list} />
-             
+            
               ))
               }
 
