@@ -19,12 +19,14 @@ const guitarCard = (props) => {
                     </figure>
                   </div>
                   <div className="media-content">
-                    <p className="title is-4 no-padding has-text-centered">{props.info.name}</p>
+                  
                   </div>
                 </div>
                 <div className="content">
+                <p className="subtitle">{props.info.name}</p>
                   Brand: {props.info.brand} <br/>
                   Top Wood: {props.info.wood_top}
+                  
                 </div>
               </div>
             </div>
