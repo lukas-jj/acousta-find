@@ -15,7 +15,6 @@ A search engine for acoustic guitars.
 - Have a 'no listings found' conditional if no matches are found.
 
 ###  SASS / CSS
-- Create 'card' for each guitar in the filtered list. 
 - Make the filter/checkboxes appear on the left side only and have the main body be the guitar listing.
 - CMD C + CMD V Bulma styles.
 
@@ -29,3 +28,4 @@ A search engine for acoustic guitars.
 
 ### Done
 - Refactor repeated code on Guitar List handleSubmit function (setAll should be an object with true or false for properties instead of individual booleans so that I can use e.target.name).
+- Create 'card' for each guitar in the filtered list. 
