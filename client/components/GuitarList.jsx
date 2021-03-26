@@ -11,6 +11,8 @@ const GuitarList = (props) => {
     props.dispatch(fetchWoodTops())
     props.dispatch(fetchNeckWidth())
   }, [])
+  
+
 
   const [formData, setFormData] = useState({
     brands: [],
@@ -26,10 +28,10 @@ const GuitarList = (props) => {
     neck_widths: false
   })
 
+  const [initialRender, setInitialRender] = useState(true)
 
   const handleChange = (e) => {
     e.persist()
-
     if (!formData[e.target.name].includes(e.target.value)) {
       setFormData(prevData => ({ ...prevData, [e.target.name]: [...prevData[e.target.name], e.target.value] }))
     }
@@ -37,11 +39,14 @@ const GuitarList = (props) => {
       setFormData(prevData => ({ ...prevData, [e.target.name]: prevData[e.target.name].filter(value => value !== e.target.value) }))
     }
   }
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     props.dispatch(fetchFilteredList(formData))
-
+    setInitialRender(false)
   }
+
   const handleCheckAll = (e) => {
     e.persist()
     setAll(prevData => ({ ...prevData, [e.target.name]: !prevData[e.target.name] }))
@@ -203,20 +208,18 @@ const GuitarList = (props) => {
                 </div>
               </div>
               <br />
-
-
-
-
-
               <input type="submit" />
             </form>
           </div>
         </div>
           <div className="columns is-multiline">
             {/* needs guitar card component */}
-            {props.list.list && props.list.list.map(list => (
+            {props.list.list && props.list.list.length > 0 ? props.list.list.map(list => (
               <GuitarCard info={list} />
             ))
+            : !initialRender && <div className="column is-full" >
+              No guitars found, sorry! Try and refine your search.
+              </div>
             }
 
           </div>
