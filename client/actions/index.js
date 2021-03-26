@@ -2,7 +2,7 @@ import { getGuitars, getList } from '../apis/guitars'
 import { getBrands } from '../apis/brands'
 import { getTypes } from '../apis/types'
 import { getWoodTops } from '../apis/wood_tops'
-import { getNeckRadii } from '../apis/neck_radii'
+import { getNeckWidths } from '../apis/neck_widths'
 
 
 export const SET_GUITARS = 'SET_GUITARS'
@@ -10,12 +10,12 @@ export const SET_BRANDS = 'SET_BRANDS'
 export const SET_TYPES = 'SET_TYPES'
 export const SET_LIST = 'SET_LIST'
 export const SET_WOOD_TOPS = 'SET_WOOD_TOPS'
-export const SET_NECK_RADII = 'SET_NECK_RADII'
+export const SET_NECK_WIDTHS = 'SET_NECK_WIDTHS'
 
-export function setNeckRadii (neck_radii) {
+export function setNeckWidths (neck_widths) {
   return {
-    type: SET_NECK_RADII,
-    neck_radii
+    type: SET_NECK_WIDTHS,
+    neck_widths
   }
 }
 
@@ -64,11 +64,11 @@ export function fetchGuitars () {
   }
 }
 
-export function fetchNeckRadii () {
+export function fetchNeckWidth () {
   return dispatch => {
-    return getNeckRadii()
-      .then(neck_radii => {
-        dispatch(setNeckRadii(neck_radii))
+    return getNeckWidths()
+      .then(neck_widths => {
+        dispatch(setNeckWidths(neck_widths))
         return null
       })
   }

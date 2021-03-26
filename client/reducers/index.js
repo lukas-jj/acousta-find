@@ -5,7 +5,7 @@ import brands from './brands'
 import types from './types'
 import list from './list'
 import wood_tops from './wood_tops'
-import neck_radii from './neck_radii'
+import neck_widths from './neck_widths'
 
 
 
@@ -15,5 +15,5 @@ export default combineReducers({
   types,
   list,
   wood_tops,
-  neck_radii
+  neck_widths
 })

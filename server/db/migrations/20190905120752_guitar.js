@@ -5,6 +5,8 @@ exports.up = function (knex) {
     table.integer("brand_id")
     table.string("type_id")
     table.string("wood_top_id")
+    table.string("neck_width_id")
+    table.string("image")
 
   })
 }

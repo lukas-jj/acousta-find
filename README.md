@@ -10,7 +10,7 @@ A search engine for acoustic guitars.
 - Create more seeds for database and rollback/migrate latest.
 
 ### Components
-- Refactor each category to be it's own component (category or brands, types, neck_radius etc).
+- Refactor each category to be it's own component (category or brands, types, neck_width etc).
 - Add new categories (*front and back end)
 - Have a 'no listings found' conditional if no matches are found.
 
