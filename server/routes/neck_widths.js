@@ -6,9 +6,9 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
 
-  db.getNeckRadii()
+  db.getNeckWidths()
     .then(results => {
-        res.json({neck_radii: results })
+        res.json({neck_widths: results })
         return null
     })
     .catch(err => {

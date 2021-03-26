@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { fetchGuitars, fetchBrands, fetchTypes, fetchFilteredList, fetchWoodTops } from '../actions'
+import { fetchGuitars, fetchBrands, fetchTypes, fetchFilteredList, fetchWoodTops, fetchNeckWidth } from '../actions'
 import GuitarCard from "./GuitarCard"
 
 const GuitarList = (props) => {
@@ -9,20 +9,21 @@ const GuitarList = (props) => {
     props.dispatch(fetchBrands())
     props.dispatch(fetchTypes())
     props.dispatch(fetchWoodTops())
-
+    props.dispatch(fetchNeckWidth())
   }, [])
 
   const [formData, setFormData] = useState({
     brands: [],
     types: [],
-    wood_tops: []
+    wood_tops: [],
+    neck_widths: []
   })
 
   const [all, setAll] = useState({
     brands: false,
     types: false,
-    wood_tops: false
-
+    wood_tops: false,
+    neck_widths: false
   })
 
 
@@ -62,14 +63,14 @@ const GuitarList = (props) => {
   return (
     <>
 
-<h1 className="title">Acoustic Guitar Search</h1>
-
+      <h1 className="title">Acoustic Guitar Search</h1>
       <div id="search" className="columns">
         <div className="column is-narrow">
           <div className="box" width="200px">
-
             <form onSubmit={handleSubmit}  >
 
+
+              {/* brands */}
               <div className="box">
                 <div className="box-content">
                   <h3 className="subtitle">
@@ -102,9 +103,9 @@ const GuitarList = (props) => {
               </div>
               <br />
 
+              {/* types */}
               <div className="box">
                 <div className="box-content">
-
                   <h3 className="subtitle">
                     Choose Types
 </h3>
@@ -135,9 +136,9 @@ const GuitarList = (props) => {
               </div>
               <br />
 
+              {/* Wood Tops */}
               <div className="box">
                 <div className="box-content">
-
                   <h3 className="subtitle">
                     Choose Wood Tops
 </h3>
@@ -168,26 +169,57 @@ const GuitarList = (props) => {
               </div>
               <br />
 
+
+              {/* Neck Width */}
+
+              <div className="box">
+                <div className="box-content">
+                  <h3 className="subtitle">
+                   Choose Neck Width
+</h3>
+                  <label >
+                    All Neck Width:
+<input name='neck_widths' type="checkbox" onClick={handleCheckAll} />
+                  </label>
+                  <br />
+                  {!all.neck_widths ?
+                    <div>
+                      {props.neck_widths.map(neck_width => (
+                        <label key={neck_width.id}>
+                          {neck_width.neck_width}:
+                          <input
+                            name='neck_widths'
+                            type="checkbox"
+                            onChange={handleChange}
+                            value={neck_width.id}
+                          />
+                          <br />
+                        </label>
+                      ))}
+                    </div> :
+                    <div>
+                      <h3>All Neck Widths</h3>
+                    </div>}
+                </div>
+              </div>
+              <br />
+
+
+
+
+
               <input type="submit" />
             </form>
-
-
           </div>
         </div>
-        <div className="column is-multiline">
-        <div className="columns is-multiline">
+          <div className="columns is-multiline">
+            {/* needs guitar card component */}
+            {props.list.list && props.list.list.map(list => (
+              <GuitarCard info={list} />
+            ))
+            }
 
-              {/* needs guitar card component */}
-
-
-              {props.list.list && props.list.list.map(list => (
-                  <GuitarCard info={list} />
-            
-              ))
-              }
-
-        </div>
-      </div>
+          </div>
       </div>
     </>
   )
@@ -199,7 +231,8 @@ const mapStateToProps = (globalState) => {
     brands: globalState.brands,
     types: globalState.types,
     list: globalState.list,
-    wood_tops: globalState.wood_tops
+    wood_tops: globalState.wood_tops,
+    neck_widths: globalState.neck_widths
   }
 }
 

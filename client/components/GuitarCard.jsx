@@ -11,25 +11,14 @@ const guitarCard = (props) => {
     <>
            <div className="column is-one-third">
             <div className="card">
-              <div className="card-content has-text-left">
-                <div className="media">
-                  <div className="media-left">
-                    <figure className="image is-48x48">
-                      {/* <img :src="card.avatar" alt="Image"> */}
-                    </figure>
-                  </div>
-                  <div className="media-content">
-                  
-                  </div>
-                </div>
-                <div className="content">
-                <p className="subtitle">{props.info.name}</p>
+                    <img className="card-image" src={props.info.image} alt="Oh nuts, no image!"></img>
+                <div className="card-content">
+                <p className="card-header-title">{props.info.name}</p>
                   Brand: {props.info.brand} <br/>
-                  Top Wood: {props.info.wood_top}
-                  
+                  Top Wood: {props.info.wood_top}<br/>
+                  Neck Width: {props.info.neck_width}
                 </div>
               </div>
-            </div>
             </div>
 </>
   )
