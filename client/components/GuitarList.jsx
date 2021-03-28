@@ -5,22 +5,24 @@ import GuitarCard from "./GuitarCard"
 
 const GuitarList = (props) => {
   useEffect(() => {
-    props.dispatch(fetchGuitars())
     props.dispatch(fetchBrands())
     props.dispatch(fetchTypes())
     props.dispatch(fetchWoodTops())
     props.dispatch(fetchNeckWidth())
   }, [])
+
   
-
-
   const [formData, setFormData] = useState({
     brands: [],
     types: [],
     wood_tops: [],
     neck_widths: []
   })
-
+  useEffect(() => {
+    setInitialRender(false)
+    props.dispatch(fetchFilteredList(formData))
+  }, [formData])
+  
   const [all, setAll] = useState({
     brands: false,
     types: false,
@@ -40,12 +42,7 @@ const GuitarList = (props) => {
     }
   }
 
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    props.dispatch(fetchFilteredList(formData))
-    setInitialRender(false)
-  }
+ 
 
   const handleCheckAll = (e) => {
     e.persist()
@@ -64,16 +61,13 @@ const GuitarList = (props) => {
     }
   }
 
-
   return (
     <>
-
       <h1 className="title">Acoustic Guitar Search</h1>
       <div id="search" className="columns">
         <div className="column is-narrow">
           <div className="box" width="200px">
-            <form onSubmit={handleSubmit}  >
-
+            <form  >
 
               {/* brands */}
               <div className="box">
@@ -208,29 +202,27 @@ const GuitarList = (props) => {
                 </div>
               </div>
               <br />
-              <input type="submit" />
             </form>
           </div>
         </div>
-          <div className="columns is-multiline">
             {/* needs guitar card component */}
-            {props.list.list && props.list.list.length > 0 ? props.list.list.map(list => (
+            {props.list.list && props.list.list.length > 0 ?
+            <div className="columns is-multiline"> {props.list.list.map(list => (
+          
               <GuitarCard info={list} />
-            ))
-            : !initialRender && <div className="column is-full" >
-              No guitars found, sorry! Try and refine your search.
-              </div>
+            ))}
+            </div>
+            : !initialRender && 
+            <p className="subtitle"> No guitars found, sorry! Please refine your search.</p> 
             }
 
           </div>
-      </div>
     </>
   )
 }
 
 const mapStateToProps = (globalState) => {
   return {
-    guitars: globalState.guitars,
     brands: globalState.brands,
     types: globalState.types,
     list: globalState.list,

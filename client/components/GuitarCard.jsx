@@ -15,8 +15,9 @@ const guitarCard = (props) => {
                 <div className="card-content">
                 <p className="card-header-title">{props.info.name}</p>
                   Brand: {props.info.brand} <br/>
+                  Type: {props.info.type}<br/>
                   Top Wood: {props.info.wood_top}<br/>
-                  Neck Width: {props.info.neck_width}
+                  Neck Width: {props.info.neck_width}<br/>
                 </div>
               </div>
             </div>
@@ -24,14 +25,13 @@ const guitarCard = (props) => {
   )
 }
 
-const mapStateToProps = (globalState) => {
-  return {
-    guitars: globalState.guitars,
-    brands: globalState.brands,
-    types: globalState.types,
-    list: globalState.list,
-    wood_tops: globalState.wood_tops
-  }
-}
+// const mapStateToProps = (globalState) => {
+//   return {
+//     brands: globalState.brands,
+//     types: globalState.types,
+//     list: globalState.list,
+//     wood_tops: globalState.wood_tops
+//   }
+// }
 
-export default connect(mapStateToProps)(guitarCard)
+export default guitarCard
