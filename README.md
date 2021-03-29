@@ -28,7 +28,7 @@ A search engine for acoustic guitars.
 -  List how many items are available in each category.
 -  Conditionally render checkoxes so that when items are not available for that category, the checkbox will not show.
 -  Include my own personal filters to get around the fact that every company has a different body type name (taylor uses words like 'baby' for small guitars). I could use general categories such as 'large'.
--  *important* make a survey for new users to help find a guitar. Have questions like 'how old', 'hand size', 'playstyle' and suggest guitars based on answers from the database. Would be amazing!
+-  *important* make a survey for new users to help find a guitar. Have questions like 'how old', 'hand size', 'playstyle' and suggest guitars based on answers from the database.
 
 ### Done
 - Make the filter/checkboxes appear on the left side only and have the main body be the guitar listing.
