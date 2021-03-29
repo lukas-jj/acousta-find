@@ -20,7 +20,7 @@ A search engine for acoustic guitars.
 - Make the checkboxes/side bar have a scrollbar.
 - Have an option to minimize sidebar.
 - *important* the guitar listings still may not fill the page correctly. Check columns documentation.
-- 
+
 ### Stretch 
 - use external API for guitars so I don't have to spend so long doing research (email Taylor, Cole Clark and Maton support). 
 - Create a 'search' bar so the user can serach by name, ideally with autocomplete.
