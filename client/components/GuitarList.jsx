@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { fetchGuitars, fetchBrands, fetchTypes, fetchFilteredList, fetchWoodTops, fetchNeckWidth } from '../actions'
+import { fetchBrands, fetchTypes, fetchFilteredList, fetchWoodTops, fetchNeckWidth } from '../actions'
 import GuitarCard from "./GuitarCard"
 
 const GuitarList = (props) => {
@@ -18,11 +18,10 @@ const GuitarList = (props) => {
     wood_tops: [],
     neck_widths: []
   })
-  useEffect(() => {
-    setInitialRender(false)
-    props.dispatch(fetchFilteredList(formData))
-  }, [formData])
+
   
+
+
   const [all, setAll] = useState({
     brands: false,
     types: false,
@@ -42,7 +41,11 @@ const GuitarList = (props) => {
     }
   }
 
- 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    props.dispatch(fetchFilteredList(formData))
+    
+  }
 
   const handleCheckAll = (e) => {
     e.persist()
@@ -67,7 +70,7 @@ const GuitarList = (props) => {
       <div id="search" className="columns">
         <div className="column is-narrow">
           <div className="box" width="200px">
-            <form  >
+            <form onSubmit={handleSubmit}  >
 
               {/* brands */}
               <div className="box">
@@ -202,6 +205,7 @@ const GuitarList = (props) => {
                 </div>
               </div>
               <br />
+              <input type="submit"/> 
             </form>
           </div>
         </div>

@@ -6,6 +6,9 @@
   "keywords": [
     "fullstack"
   ],
+  "engines": {
+    "node": "14.15.3"
+  },
   "scripts": {
     "start": "node server",
     "test": "jest",
@@ -19,6 +22,7 @@
     "lint": "eslint --ext .js,.jsx .",
     "webpack": "webpack --config ./client/webpack.config.js",
     "knex": "knex --knexfile ./server/db/knexfile.js"
+    
   },
   "babel": {
     "presets": [
@@ -46,7 +50,7 @@
     "bulma": "^0.9.2",
     "express": "^4.17.1",
     "knex": "^0.21.12",
-    "pg": "^8.5.1",
+    "pg": "^8.6.0",
     "superagent": "^6.1.0"
   },
   "devDependencies": {

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { connect } from 'react-redux'
 
 
 const guitarCard = (props) => {
@@ -12,7 +11,7 @@ const guitarCard = (props) => {
            <div className="column is-one-third">
             <div className="card">
                     <img className="card-image" src={props.info.image} alt="Oh nuts, no image!"></img>
-                <div className="card-content">
+                <div className="card-contnent">
                 <p className="card-header-title">{props.info.name}</p>
                   Brand: {props.info.brand} <br/>
                   Type: {props.info.type}<br/>
