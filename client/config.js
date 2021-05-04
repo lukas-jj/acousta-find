@@ -1,7 +1,7 @@
 const environments = {
-    development: 'http://localhost:3000/api/v1',
-    test: 'http://localhost:3333/api/v1',
-    production: 'https://acoustafind.herokuapp.com/api/v1',
+    development: 'http://localhost:3000/api',
+    test: 'http://localhost:3333/api',
+    production: 'https://acoustafind.herokuapp.com/api',
     integration: '',
     deployment: '',
     build: ''
