@@ -6,7 +6,6 @@
   "keywords": [
     "fullstack"
   ],
-  
   "scripts": {
     "start": "node server",
     "test": "jest",
