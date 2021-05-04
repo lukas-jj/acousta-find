@@ -106,8 +106,6 @@ export function fetchWoodTops () {
 
 export function fetchFilteredList (formData) {
   return dispatch => {
-    console.log("formData", formData)
-
     return getList(formData)
       .then(list => {
         dispatch(setList(list))

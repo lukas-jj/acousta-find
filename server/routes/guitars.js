@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+
   db.getFilteredList(req.body)
     .then(results => {
       res.json({ list: results })
