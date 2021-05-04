@@ -34,7 +34,7 @@ const GuitarList = (props) => {
   const handleChange = (e) => {
     e.persist()
     if (!formData[e.target.name].includes(e.target.value)) {
-      setFormData(prevData => ({ ...prevData, [e.target.name]: [...prevData[e.target.name], e.target.value] }))
+      setFormData(prevData => ({ ...prevData, [e.target.name]: [...prevData[e.target.name], parseInt(e.target.value)] }))
     }
     else {
       setFormData(prevData => ({ ...prevData, [e.target.name]: prevData[e.target.name].filter(value => value !== e.target.value) }))
@@ -43,6 +43,7 @@ const GuitarList = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(formData)
     props.dispatch(fetchFilteredList(formData))
     
   }

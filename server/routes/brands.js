@@ -1,7 +1,6 @@
 const express = require('express')
 
 const db = require('../db/guitars')
-
 const router = express.Router()
 
 
