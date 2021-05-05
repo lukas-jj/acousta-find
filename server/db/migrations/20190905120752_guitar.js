@@ -3,9 +3,9 @@ exports.up = function (knex) {
     table.increments("id")
     table.string("name")
     table.integer("brand_id")
-    table.string("type_id")
-    table.string("wood_top_id")
-    table.string("neck_width_id")
+    table.integer("type_id")
+    table.integer("wood_top_id")
+    table.integer("neck_width_id")
     table.string("image")
 
   })
