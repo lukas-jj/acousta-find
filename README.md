@@ -1,6 +1,6 @@
 # Acoustic Search
 
-A search engine for acoustic guitars.
+A search engine for acoustic guitars. A work in progress https://acoustafind.herokuapp.com/
 
 ## To Do
 
